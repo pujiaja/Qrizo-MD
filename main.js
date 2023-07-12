@@ -99,7 +99,7 @@ const connectionOptions = {
 	    version,
         printQRInTerminal: true,
         auth: state,
-        browser: ['Clara - MD', 'Safari', '3.1.0'], 
+        browser: ['Cloud - MD', 'Safari', '3.1.0'], 
 	      patchMessageBeforeSending: (message) => {
                 const requiresPatch = !!(
                     message.buttonsMessage 
@@ -206,8 +206,8 @@ global.reloadHandler = async function (restatConn) {
     conn.ev.off('creds.update', conn.credsUpdate)
   }
 
-  conn.welcome = 'Selamat Datang Di @subject\nSilahkan Perkenalkan Diri Kamu @user\n\nDan Jangan Lupa Baca Deskripsi\n@desc'
-  conn.bye = 'Selamat Tinggal @user\nKami Harap Kamu Akan Kembali Lagi'
+  conn.welcome = 'Selamat Datang Di @subject\nSilahkan Perkenalkan Diri Kamu @user'
+  conn.bye = 'Selamat Tinggal @user\nKalau Balik Jangan Lupa Gorengannya'
   conn.spromote = '@user Telah Di Promosikan Menjadi Admin'
   conn.sdemote = '@user Telah Di Berhentikan Sebagai Admin'
   conn.sDesc = 'Deskripsi Telah Diubah Menjadi \n@desc'
