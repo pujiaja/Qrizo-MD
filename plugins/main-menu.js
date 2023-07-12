@@ -1,5 +1,6 @@
 import { promises } from 'fs'
 import { join } from 'path'
+import uploadImage from '../lib/uploadImage.js'
 import { xpRange } from '../lib/levelling.js'
 import moment from 'moment-timezone'
 import os from 'os'
@@ -8,56 +9,45 @@ import fetch from 'node-fetch'
 const { generateWAMessageFromContent, proto } = (await import('@adiwajshing/baileys')).default
 
 const defaultMenu = {
-  before: `╔┈┈「 *Info User* 」
-╎
-╎❏ *Nama:*  %name 
-╎❏ *Nomor:* %tag
-╎❏︎ *Premium:* %prems
-╎❏︎ *Limit:* %limit
-╎❏︎ *Money:* %money
-╎❏ *Role:* %role
-╎❏︎ *Level:* %level
-╎❏︎ *Xp:* %exp / %maxexp
-╎❏︎ *Total Xp:* %totalexp
-╠┈┈「 *Info Hari* 」
+  before: `╔┈┈「 *Day Info* 」
 ╎❏ *Waktu:* %wib
 ╎❏ *Hari:* %week %weton
 ╎❏ *Tanggal:* %date
 ╎❏ *Tanggal Islam:* %dateIslamic
-╠┈┈「 *Info Bot* 」
-╎❏ *Bot Name:* %me
+╠┈┈「 *Bot Info* 」
+╎❏ *Name:* %me
 ╎❏ *Mode:* %mode
 ╎❏ *Platform:* %platform
-╎❏ *Type:* Node.Js
-╎❏ *Baileys:* Multi Device
+╎❏ *Type:* Node.Js🗿
+╎❏ *Baileys:* Multi Device🕵
 ╎❏ *Prefix:* [ *%_p* ]
 ╎❏ *Uptime:* %muptime
 ╎❏ *Database:* %rtotalreg dari %totalreg
 ╚┈┈┈┈┈┈┈┈┈❖
 %readmore
 `.trimStart(),
-  header: '╔┈「 %category 」',
+  header: '╔「 %category 」',
   body: '╎ぎ %cmd',
-  footer: '╚┈┈┈┈┈┈┈┈┈❖',
+  footer: '╚┈┈┈┈┈┈┈┈┈❖\n',
   after: ``,
 }
 let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command}) => {
 let tags = {
-'main': 'Main',
-'ai': 'AI',
-'anime': 'Animanga',
-'internet': 'Internet',
-'downloader': 'Download',
-'sticker': 'Sticker',
-'tools': 'Tools',
-'internet': 'Internet',
-'islamic': 'Islamic',
-'group': 'Group',
-'game': 'Game',
-'rpg': 'RPG',
-'quotes': 'Quotes',
-'maker': 'Maker',
-'owner': 'Owner',
+'main': 'Main Menu',
+'ai': 'Artificial Intelligence',
+'anime': 'Anime Manga',
+'internet': 'Internet Searching',
+'downloader': 'Downloader Media',
+'tools': 'Tools Feature',
+'img': 'Image Processing',
+'maker': 'Image Creator',
+'random': 'Random Feature',
+'group': 'Group Admin',
+'game': 'Fun Games',
+'rpg': 'RPG Games',
+'sticker': 'Sticker Creator',
+'tools': 'Tools Feature',
+'owner': 'Feature Owner',
 }
  
   try {
@@ -207,20 +197,28 @@ let tags = {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     
- let fkon = { key: { fromMe: false, participant: `${m.sender.split`@`[0]}@s.whatsapp.net`, ...(m.chat ? { remoteJid: '16504228206@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
+ let fkon = { key: { fromMe: false, participant: `${m.sender.split`@`[0]}@s.whatsapp.net`, ...(m.chat ? { remoteJid: '6285727882445@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
  
+ let ihu = 'https://telegra.ph/file/ca55e9ed7943b34a45232.jpg'
  
- let fotonya = 'https://telegra.ph/file/c5170017e92f837e28d5f.jpg'
- let namabotnya = `Clara - Multidevice`
- 
- 
- function _0x3597(){var _0x5dd904=['205167LUHyqm','613033cfDkqG','56310zClfDf','35oyfuff','1797360TsPuex','990IAJZpJ','sendMessage','3943740XslaEf','353210wghoKm','author','22jZSBIp','579944TzGnnR'];_0x3597=function(){return _0x5dd904;};return _0x3597();}function _0x4ec4(_0x506b58,_0x3a05d1){var _0x359705=_0x3597();return _0x4ec4=function(_0x4ec4e3,_0x1ee63c){_0x4ec4e3=_0x4ec4e3-0x1c3;var _0x1c128d=_0x359705[_0x4ec4e3];return _0x1c128d;},_0x4ec4(_0x506b58,_0x3a05d1);}function _0x96a002(_0x55cf8c,_0x3c0b91){return _0x4ec4(_0x3c0b91-0xb9,_0x55cf8c);}(function(_0x577d72,_0x3be57d){var _0x497e25=_0x577d72();function _0x346403(_0x47e3af,_0x567b1f){return _0x4ec4(_0x567b1f-0x2be,_0x47e3af);}while(!![]){try{var _0x1f6b16=-parseInt(_0x346403(0x489,0x48b))/0x1+parseInt(_0x346403(0x486,0x488))/0x2*(parseInt(_0x346403(0x48a,0x48a))/0x3)+-parseInt(_0x346403(0x485,0x482))/0x4+-parseInt(_0x346403(0x48c,0x486))/0x5+parseInt(_0x346403(0x484,0x485))/0x6+parseInt(_0x346403(0x486,0x481))/0x7*(-parseInt(_0x346403(0x48d,0x489))/0x8)+parseInt(_0x346403(0x482,0x483))/0x9*(parseInt(_0x346403(0x486,0x48c))/0xa);if(_0x1f6b16===_0x3be57d)break;else _0x497e25['push'](_0x497e25['shift']());}catch(_0x1acb6e){_0x497e25['push'](_0x497e25['shift']());}}}(_0x3597,0x823fb),conn[_0x96a002(0x280,0x27f)](m['chat'],{'text':text,'contextInfo':{'externalAdReply':{'title':namabotnya,'body':global[_0x96a002(0x284,0x282)],'thumbnailUrl':fotonya,'sourceUrl':sig,'mediaType':0x1,'renderLargerThumbnail':!![]}}}));
+ conn.sendMessage(m.chat, {
+      text: text,
+      contextInfo: {
+      externalAdReply: {
+      title: `QrizoBotz - MD`,
+      body: global.author,
+      thumbnailUrl: ihu,
+      sourceUrl: `https://chat.whatsapp.com/IRhyTeTi6u7GmUlklQ8bNe`,
+      mediaType: 1,
+      renderLargerThumbnail: true
+      }}})
       
+      let vn = "./vn/menu01.mp3"
       
-conn.sendFile(m.chat, `${audio.getRandom()}`, "inimenu.mp3", null, m, true, {
-			type: "audioMessage",
-			ptt: true,
-		});
+	conn.sendFile(m.chat, vn, "ehee.mp3", null, m, true, {
+		type: "audioMessage",
+		ptt: true,
+	});
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
@@ -230,7 +228,7 @@ handler.help = ['menu']
 handler.tags = ['main']
 handler.command = /^(menu|help|\?)$/i
 
-handler.register = false
+handler.register = true
 handler.exp = 3
 
 export default handler
@@ -259,9 +257,20 @@ function clockStringP(ms) {
   let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
   return [ye, ' *Years 🗓️*\n',  mo, ' *Month 🌙*\n', d, ' *Days ☀️*\n', h, ' *Hours 🕐*\n', m, ' *Minute ⏰*\n', s, ' *Second ⏱️*'].map(v => v.toString().padStart(2, 0)).join('')
 }
-
-const audio = [
-	"https://bucin-livid.vercel.app/audio/yowaimo.mp3",
-	"https://bucin-livid.vercel.app/audio/summer.mp3",
-	"https://bucin-livid.vercel.app/audio/one.m4a",
-];
+function ucapan() {
+    const time = moment.tz('Asia/Jakarta').format('HH')
+    let res = "./vn/subuh.mp3"
+    if (time >= 4) {
+        res = "./vn/pagi.mp3"
+    }
+    if (time > 10) {
+        res = "./vn/siang.mp3️"
+    }
+    if (time >= 15) {
+        res = "./vn/emang bole sesakit ini ?.mp3"
+    }
+    if (time >= 18) {
+        res = "./vn/malam.mp3"
+    }
+    return res
+}

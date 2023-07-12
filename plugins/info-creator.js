@@ -4,10 +4,11 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
 let name = await conn.getName(who)
 
   const sentMsg = await conn.sendContactArray(m.chat, [
-    [`${nomorwa}`, `${await conn.getName(nomorwa+'@s.whatsapp.net')}`, `Xyroinee-ID `, `My Skill Just Copas`, `Admin@xyroinee.xyz`, `Indonesia`, `https://api.xyroinee.xyz`, `Developer Clara - MD`],
-    [`${conn.user.jid.split('@')[0]}`, `${await conn.getName(conn.user.jid)}`, `Whatsapp Bot`, `Jangan Di Spam`, `Nothing`, `Indonesia`, `https://github.com/Xyroinee/Clara-MD`, `Hanya Bot Pasaran Yang Sering Error`]
+    [`${nomorwa}`, `${await conn.getName(nomorwa+'@s.whatsapp.net')}`, `HengkyQ `, `My Skill Just Copas`, `Admin@pujimods.epizy.com`, `Indonesia`, `http://pujimods.epizy.com`, `Developer VINSS - MD`],
+    [`${conn.user.jid.split('@')[0]}`, `${await conn.getName(conn.user.jid)}`, `Whatsapp Bot`, `Jangan Di Spam`, `Nothing`, `Indonesia`, `https://instagram.com/HengkyQ`, `Hanya Bot Yang Sering Error`]
   ], m)
-  await conn.sendFile(m.chat, "https://xyroinee.github.io/audio/audio_ownerku.mp3", 'kuru.mp3', null, m, true, {
+  let vn = "./vn/owner.mp3"
+  await conn.sendFile(m.chat, vn, 'kuru.mp3', null, m, true, {
 		type: "audioMessage",
 		ptt: true,
 	})

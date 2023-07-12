@@ -10,7 +10,7 @@ let namae = conn.getName(m.sender)
 let user = global.db.data.users[m.sender]
 const pp = await conn.profilePictureUrl(m.sender, "image").catch((_) => "./src/avatar_contact.png")
   if (user.registered === true) throw `Kamu Sudah Ter daftar Di Database, Apa Kamu Ingin Mendaftar Ulang? *${usedPrefix}unreg`
-  if (!Reg.test(text)) return m.reply(`Masukan Nama.UmurKamu\nContoh: .daftar Clara.18`)
+  if (!Reg.test(text)) return m.reply(`Masukan Nama.UmurKamu\nContoh: .daftar Agus.18`)
   let [_, name, splitter, age] = text.match(Reg)
   if (!name) throw 'Nama Tidak Boleh Kosong'
   if (!age) throw 'Umur Tidak Boleh Kosong'
